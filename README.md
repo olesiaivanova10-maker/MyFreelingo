@@ -303,3 +303,7 @@ Organisations that need to deploy FreeLingo without the AGPL's copyleft obligati
 ## Author
 
 **Arturo Carretero Calvo** — [@artcc](https://github.com/artcc)
+
+## Appearance
+
+Choose System, Dark, Light, or a searchable Monkeytype color palette in Appearance. The selected theme is saved in the browser. Color palettes are adapted from the [Monkeytype project](https://github.com/monkeytypegame/monkeytype).

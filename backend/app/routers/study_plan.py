@@ -275,14 +275,12 @@ async def get_today_lessons(
 
         # Auto-generate the lesson if it doesn't exist yet
         if lesson_id is None:
-            # Build list of previously completed sibling lessons in this unit to prevent repetition
+            # Include generated siblings so the prompt can avoid repeated lesson content.
             previous_lessons = [
                 {
                     "title": sibling.title,
-                    "type": sibling.lesson_type,
-                    "summary": (sibling.content or {}).get("summary", ""),
-                    "grammar_point": (sibling.content or {}).get("grammar_point", ""),
-                    "key_phrases": (sibling.content or {}).get("key_phrases", []),
+                    "lesson_type": sibling.lesson_type,
+                    "content": sibling.content or {},
                 }
                 for sibling in lessons_by_unit.get(d_unit_id, [])
                 if sibling.title != d_title

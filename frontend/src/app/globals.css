@@ -320,3 +320,51 @@ html[data-theme='light'] {
   animation: bubble-in 0.4s ease-out forwards;
   opacity: 0;
 }
+
+/* Monkeytype color palettes */
+html[data-palette] {
+  --fl-bg: var(--mt-bg);
+  --fl-bg-alt: var(--mt-bg);
+  --fl-surface: var(--mt-sub-alt);
+  --fl-surface-2: var(--mt-sub-alt);
+  --fl-border: color-mix(in srgb, var(--mt-bg) 65%, var(--mt-text));
+  --fl-border-2: color-mix(in srgb, var(--mt-bg) 45%, var(--mt-text));
+  --fl-muted-4: var(--mt-sub);
+  --fl-muted-3: var(--mt-sub);
+  --fl-muted-2: var(--mt-sub);
+  --fl-muted-1: var(--mt-text);
+  --fl-muted-0: var(--mt-text);
+  --fl-fg-2: var(--mt-text);
+  --fl-fg: var(--mt-text);
+  --fl-fg-bright: var(--mt-text);
+  --fl-dot: var(--mt-sub-alt);
+  --fl-accent: var(--mt-main);
+  --fl-accent-fg: var(--mt-bg);
+  --fl-error: var(--mt-error);
+  --fl-error-fg: var(--mt-error);
+  --background: var(--mt-bg);
+  --foreground: var(--mt-text);
+  --card: var(--mt-sub-alt);
+  --card-foreground: var(--mt-text);
+  --popover: var(--mt-sub-alt);
+  --popover-foreground: var(--mt-text);
+  --primary: var(--mt-main);
+  --primary-foreground: var(--mt-bg);
+  --secondary: var(--mt-sub-alt);
+  --secondary-foreground: var(--mt-text);
+  --muted: var(--mt-sub-alt);
+  --muted-foreground: var(--mt-sub);
+  --accent: var(--mt-sub-alt);
+  --accent-foreground: var(--mt-text);
+  --border: var(--fl-border);
+  --input: var(--mt-sub-alt);
+  --ring: var(--mt-main);
+  --sidebar: var(--mt-bg);
+  --sidebar-foreground: var(--mt-text);
+  --sidebar-primary: var(--mt-main);
+  --sidebar-primary-foreground: var(--mt-bg);
+  --sidebar-accent: var(--mt-sub-alt);
+  --sidebar-accent-foreground: var(--mt-text);
+  --sidebar-border: var(--fl-border);
+  --sidebar-ring: var(--mt-main);
+}

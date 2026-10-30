@@ -1,3 +1,4 @@
+import { monkeytypeThemes } from '@/lib/monkeytype-themes'
 import type { Metadata } from 'next'
 import {
   Geist,
@@ -37,7 +38,7 @@ const notoSansSC = Noto_Sans_SC({
   subsets: ['latin'],
 })
 
-const themeScript = `(function(){try{var t='system';var s=localStorage.getItem('fl-theme');if(s){var p=JSON.parse(s);t=p&&p.state&&p.state.theme?p.state.theme:t}var l=t==='light'||(t==='system'&&window.matchMedia('(prefers-color-scheme: light)').matches);if(l){document.documentElement.setAttribute('data-theme','light')}else{document.documentElement.removeAttribute('data-theme')}}catch(e){}})();`
+const themeScript = `(function(){try{var t='system';var s=localStorage.getItem('fl-theme');if(s){var p=JSON.parse(s);t=p&&p.state&&p.state.theme?p.state.theme:t}var palettes=${JSON.stringify(monkeytypeThemes)};var c=t.indexOf("monkeytype:")===0?palettes[t.slice(11)]:null;var h=document.documentElement;if(c){h.setAttribute('data-palette',t);Object.entries(c).forEach(function(e){h.style.setProperty('--mt-'+e[0].replace(/[A-Z]/g,function(x){return '-'+x.toLowerCase()}),e[1])})}else if(t==='light'||(t==='system'&&window.matchMedia('(prefers-color-scheme: light)').matches)){h.setAttribute('data-theme','light')}else{h.removeAttribute('data-theme')}}catch(e){}})();`
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://freelingo.app'),

@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
-export type Theme = 'system' | 'dark' | 'light'
+export type Theme = string
 
 interface ThemeStore {
   theme: Theme

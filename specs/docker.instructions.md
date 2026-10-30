@@ -142,3 +142,7 @@ Field: audio_file
 ```
 
 The backend passes the required ISO 639-1 language derived from the user-owned study plan. Its local STT service calls this endpoint correctly; do not confuse it with the OpenAI-compatible `/v1/audio/transcriptions` path, which does not exist in this service.
+
+### Appearance themes
+
+The frontend includes Monkeytype color palettes at build time. Theme choice is stored in each browser and requires no server configuration.
