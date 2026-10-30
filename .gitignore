@@ -26,4 +26,4 @@ coverage.xml
 htmlcov/
 
 .env*
-data/
+/data/
