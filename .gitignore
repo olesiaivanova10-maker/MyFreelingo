@@ -1,0 +1,29 @@
+# Ignore environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Local development files
+/data/
+
+# OS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+dist/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+.env*
+data/

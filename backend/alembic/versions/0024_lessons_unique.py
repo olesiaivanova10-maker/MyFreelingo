@@ -1,0 +1,46 @@
+"""Add unique constraint to lessons (study_plan_id, week_number, day_number, title)
+
+Revision ID: 0024_lessons_unique
+Revises: 0023_exercise_explanation
+Create Date: 2026-05-24
+"""
+
+from collections.abc import Sequence
+
+from alembic import op
+
+revision: str = "0024_lessons_unique"
+down_revision: str | None = "0023_exercise_explanation"
+branch_labels: str | Sequence[str] | None = None
+depends_on: str | Sequence[str] | None = None
+
+
+def upgrade() -> None:
+    # Remove duplicate lessons before adding the unique constraint.
+    # Duplicates exist in production because the IntegrityError guard was not
+    # yet in place. Strategy: per group keep the completed lesson (if any),
+    # otherwise keep the oldest (MIN id). DISTINCT ON is PostgreSQL-specific
+    # and safe here — we only ever run on PostgreSQL.
+    op.execute("""
+        DELETE FROM lessons
+        WHERE id NOT IN (
+            SELECT DISTINCT ON (study_plan_id, week_number, day_number, title) id
+            FROM lessons
+            ORDER BY
+                study_plan_id,
+                week_number,
+                day_number,
+                title,
+                is_completed DESC,
+                id ASC
+        )
+        """)
+    op.create_unique_constraint(
+        "uq_lessons_plan_week_day_title",
+        "lessons",
+        ["study_plan_id", "week_number", "day_number", "title"],
+    )
+
+
+def downgrade() -> None:
+    op.drop_constraint("uq_lessons_plan_week_day_title", "lessons", type_="unique")
